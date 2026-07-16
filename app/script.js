@@ -70,24 +70,29 @@ function renderExpenses() {
 }
 
 function updateSummary() {
-  const total = expenses.reduce((sum, exp) => sum + exp.amount, 0);
-  totalAmountEl.textContent = `Rs ${total.toLocaleString()}`;
-  totalCountEl.textContent = expenses.length;
-
   const categoryTotals = {};
-  expenses.forEach((exp) => {
-    categoryTotals[exp.category] = (categoryTotals[exp.category] || 0) + exp.amount;
+  
+  expenses.forEach(expense => {
+    categoryTotals[expense.category] = (categoryTotals[expense.category] || 0) + expense.amount;
   });
-
+  
+  // Calculate totals
+  const totalAmount = expenses.reduce((sum, e) => sum + e.amount, 0);
+  document.getElementById('totalAmount').textContent = `Rs ${totalAmount}`;
+  document.getElementById('totalCount').textContent = expenses.length;
+  
+  // Find top category - use strict > (not >=) to keep the first category on ties
   let topCategory = '-';
-  let topAmount = 0;
-  for (const [category, amount] of Object.entries(categoryTotals)) {
-    if (amount > topAmount) {
-      topAmount = amount;
+  let maxTotal = 0;
+  
+  Object.entries(categoryTotals).forEach(([category, total]) => {
+    if (total > maxTotal) {  // Strict > keeps first category on tie
+      maxTotal = total;
       topCategory = category;
     }
-  }
-  topCategoryEl.textContent = topCategory;
+  });
+  
+  document.getElementById('topCategory').textContent = topCategory;
 }
 
 function addExpense(title, amountRaw, category, date) {
