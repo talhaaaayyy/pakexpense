@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>PakExpense — Personal Expense Tracker</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="app-header">
+      <h1>PakExpense</h1>
+      <p class="tagline">Track the small spends before they add up.</p>
+    </header>
+
+    <section class="summary-cards">
+      <div class="card">
+        <span class="card-label">Total Spent</span>
+        <span id="totalAmount" class="card-value">Rs 0</span>
+      </div>
+      <div class="card">
+        <span class="card-label">Entries</span>
+        <span id="totalCount" class="card-value">0</span>
+      </div>
+      <div class="card">
+        <span class="card-label">Top Category</span>
+        <span id="topCategory" class="card-value">-</span>
+      </div>
+    </section>
+
+    <section class="add-expense">
+      <h2>Add Expense</h2>
+      <form id="expenseForm">
+        <input type="text" id="titleInput" placeholder="e.g. Cafeteria lunch" required />
+        <input type="number" id="amountInput" placeholder="Amount (Rs)" min="0" step="1" required />
+        <select id="categoryInput" required>
+          <option value="" disabled selected>Category</option>
+          <option value="Food">Food</option>
+          <option value="Transport">Transport</option>
+          <option value="Stationery">Stationery</option>
+          <option value="Mobile/Internet">Mobile/Internet</option>
+          <option value="Other">Other</option>
+        </select>
+        <input type="date" id="dateInput" required />
+        <button type="submit">Add Expense</button>
+      </form>
+    </section>
+
+    <section class="expense-list-section">
+      <div class="list-header">
+        <h2>Expenses</h2>
+        <select id="filterCategory">
+          <option value="all">All Categories</option>
+          <option value="Food">Food</option>
+          <option value="Transport">Transport</option>
+          <option value="Stationery">Stationery</option>
+          <option value="Mobile/Internet">Mobile/Internet</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+      <ul id="expenseList"></ul>
+      <p id="emptyState" class="empty-state">No expenses yet — add your first one above.</p>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

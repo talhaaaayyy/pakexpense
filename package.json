@@ -1,0 +1,12 @@
+{
+  "name": "pakexpense",
+  "version": "1.0.0",
+  "description": "PakExpense - personal expense tracker (Assignment 3/4, CSE325)",
+  "scripts": {
+    "test": "jest --verbose"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0"
+  }
+}

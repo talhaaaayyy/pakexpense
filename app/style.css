@@ -1,0 +1,124 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  background: #f4f6f8;
+  color: #1f2933;
+}
+
+.app {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 24px 20px 60px;
+}
+
+.app-header h1 {
+  margin-bottom: 2px;
+  color: #14532d;
+}
+
+.tagline {
+  margin-top: 0;
+  color: #52606d;
+  font-size: 14px;
+}
+
+.summary-cards {
+  display: flex;
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.card {
+  flex: 1;
+  background: #fff;
+  border-radius: 10px;
+  padding: 14px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.card-label {
+  font-size: 12px;
+  color: #7b8794;
+  text-transform: uppercase;
+}
+
+.card-value {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.add-expense, .expense-list-section {
+  background: #fff;
+  border-radius: 10px;
+  padding: 18px;
+  margin-bottom: 20px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+
+#expenseForm {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+#expenseForm input, #expenseForm select, #expenseForm button {
+  padding: 8px 10px;
+  border: 1px solid #cbd2d9;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+#expenseForm button {
+  grid-column: span 2;
+  background: #14532d;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#expenseList {
+  list-style: none;
+  padding: 0;
+  margin-top: 10px;
+}
+
+#expenseList li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #e4e7eb;
+}
+
+.expense-meta {
+  font-size: 12px;
+  color: #7b8794;
+}
+
+.delete-btn {
+  background: none;
+  border: none;
+  color: #b91c1c;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.empty-state {
+  color: #9aa5b1;
+  text-align: center;
+  font-size: 14px;
+}
