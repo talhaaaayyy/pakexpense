@@ -71,8 +71,12 @@ function renderExpenses() {
 
 function updateSummary() {
   const categoryTotals = {};
+  const categoryOrder = []; // Track order categories first appear
   
   expenses.forEach(expense => {
+    if (!categoryTotals[expense.category]) {
+      categoryOrder.push(expense.category); // Record first appearance
+    }
     categoryTotals[expense.category] = (categoryTotals[expense.category] || 0) + expense.amount;
   });
   
@@ -81,13 +85,13 @@ function updateSummary() {
   document.getElementById('totalAmount').textContent = `Rs ${totalAmount}`;
   document.getElementById('totalCount').textContent = expenses.length;
   
-  // Find top category - use strict > (not >=) to keep the first category on ties
+  // Find top category using tracked order - first category wins ties
   let topCategory = '-';
   let maxTotal = 0;
   
-  Object.entries(categoryTotals).forEach(([category, total]) => {
-    if (total > maxTotal) {  // Strict > keeps first category on tie
-      maxTotal = total;
+  categoryOrder.forEach(category => {
+    if (categoryTotals[category] > maxTotal) {
+      maxTotal = categoryTotals[category];
       topCategory = category;
     }
   });
