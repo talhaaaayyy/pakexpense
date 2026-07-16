@@ -73,12 +73,15 @@ function updateSummary() {
   const categoryTotals = {};
   const categoryOrder = []; // Track order categories first appear
   
-  expenses.forEach(expense => {
+  // Iterate in reverse since addExpense uses unshift, to track categories
+  // in the order they were originally added
+  for (let i = expenses.length - 1; i >= 0; i--) {
+    const expense = expenses[i];
     if (!categoryTotals[expense.category]) {
-      categoryOrder.push(expense.category); // Record first appearance
+      categoryOrder.push(expense.category); // Record first appearance (in reverse/original order)
     }
     categoryTotals[expense.category] = (categoryTotals[expense.category] || 0) + expense.amount;
-  });
+  }
   
   // Calculate totals
   const totalAmount = expenses.reduce((sum, e) => sum + e.amount, 0);
